@@ -262,3 +262,158 @@ delete nbr_ptr; // Désallocation de la mémoire allouée à la variable
 
 #### Remarques:
 - Il est important de bien gérer la mémoire allouée dynamiquement pour éviter les fuites de mémoire.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+## Manipulation des Tableaux en C++:
+En C++, les tableaux sont des structures de données qui permettent de stocker une collection d'éléments du même type. La syntaxe pour déclarer, initialiser et manipuler des tableaux en C++ est similaire à celle du langage C, avec quelques ajouts introduits en C++11.
+
+#### Déclaration des tableaux:
+
+##### Déclaration classique:
+La manière la plus simple de déclarer un tableau en C++ est d'utiliser la syntaxe suivante:
+```c++
+type_donnees nom_tableau[taille];
+```
+Où:
+- **type_donnees** est le type des éléments du tableau (par exemple, int, float, char).
+- **nom_tableau** est le nom du tableau.
+- **taille** est la taille du tableau, c'est-à-dire le nombre d'éléments qu'il peut contenir.
+
+Par exemple, la déclaration suivante crée un tableau nommé `tab` pouvant stocker `255` entiers:
+```c++
+int	tab[255];
+```
+##### Déclaration avec std::array (C++11):
+En C++11, une nouvelle fonctionnalité a été introduite pour la gestion des tableaux : la classe `std::array`. Cette classe offre des fonctionnalités supplémentaires par rapport aux tableaux classiques, telles que la vérification de la taille du tableau à l'exécution et l'accès aux éléments par des itérateurs.
+
+Pour déclarer un tableau avec `std::array`, on utilise la syntaxe suivante:
+```c++
+#include <array>
+
+std::array<type_donnees, taille> nom_tableau;
+```
+
+```c++
+#include <array>
+
+std::array<int, 6> tab;
+int	taille = tab.size(); // c++11
+```
+Par exemple, la déclaration suivante crée un tableau nommé `tab` pouvant stocker 6 entiers à l'aide de `std::array`:
+
+#### Initialisation des tableaux:
+
+##### Initialisation individuelle:
+Les éléments d'un tableau peuvent être initialisés individuellement en affectant des valeurs à chaque élément en utilisant son indice entre crochets. Par exemple:
+```c++
+int tab[5]
+
+tab[0] = 10;
+tab[1] = 20;
+tab[2] = 30;
+tab[3] = 40;
+tab[4] = 50;
+```
+
+Cette déclaration crée un tableau `tab` de 5 entiers et initialise ses éléments avec les valeurs 10, 20, 30, 40 et 50.
+
+##### Initialisation par liste de valeurs (C++11):
+En C++11, il est possible d'initialiser un tableau en utilisant une liste de valeurs entre accolades, sans avoir à spécifier explicitement la taille du tableau. La taille du tableau sera déduite automatiquement en fonction du nombre de valeurs dans la liste. Par exemple:
+```c++
+int tab[] = {10, 20, 30, 40, 50};
+```
+
+Cette déclaration est équivalente à la déclaration précédente avec la taille explicite.
+
+#### Accès aux éléments d'un tableau:
+On accède aux éléments d'un tableau en utilisant son nom suivi de l'indice de l'élément entre crochets. L'indice commence à 0, donc pour accéder au premier élément du tableau, on utilise l'indice 0, pour le deuxième élément, l'indice 1, et ainsi de suite. Par exemple:
+
+```c++
+
+```
+
+On peut également utiliser l'opérateur `ptr` pour accéder aux éléments d'un tableau. L'expression `tab + indice` renvoie un pointeur vers l'élément d'indice `indice`. En déréférençant ce pointeur avec l'opérateur `*`, on obtient la valeur de l'élément. Par exemple:
+
+
+```c++
+int tab[5] = {10, 20, 30, 40, 50};
+
+int premier_element = *(tab + 0); // premier_element vaut 10
+int dernier_element = *(tab + 4); // dernier_element vaut 50
+```
+
+#### Remarques :
+- La taille d'un tableau déclaré statiquement ne peut pas être modifiée pendant l'exécution du programme.
+- Il est important de ne pas dépasser la taille du tableau lors de l'accès aux éléments, car cela peut entraîner des dépassements de mémoire et des comportements non désirés.
+- les tableaux dynamiques, que nous verrons plus tard, permettent d'allouer la mémoire de manière dynamique pendant l'exécution du programme. Cela offre plus de flexibilité, mais nécessite une gestion manuelle de la mémoire à l'aide d'opérateurs comme `new` et `delete` pour éviter les fuites de mémoire.
+- Les tableaux en C++ peuvent être multidimensionnels, ce qui signifie qu'ils peuvent stocker une collection d'éléments organisés en plusieurs dimensions, comme des lignes et des colonnes dans une matrice.
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+## Les enum et les enum class en C++:
+En C++, les énumérations (enum) et les énumérations avec classe (enum class) permettent de créer des types de données définis par l'utilisateur pour représenter un ensemble de valeurs constantes nommées. Elles offrent un moyen d'améliorer la lisibilité et la maintenabilité du code en remplaçant des valeurs numériques par des noms significatifs.
+
+
+#### Déclaration d'une énumération:
+La syntaxe de base pour déclarer une énumération est la suivante:
+```c++
+enum nom_enumeration {
+  valeur1,
+  valeur2,
+  ...
+  valeurN
+};
+
+```
+Où:
+- `nom_enumeration` est le nom de l'énumération.
+- `valeur1`, `valeur2`, ..., `valeurN` sont les identificateurs (noms) des valeurs constantes de l'énumération.
+
+Par exemple, la déclaration suivante crée une énumération nommée `Jour` pour représenter les jours de la semaine:
+
+```c++
+enum Jour { LUNDI, MARDI, MERCREDI, JEUDI, VENDREDI, SAMEDI, DIMANCHE };
+```
+#### Utilisation d'une énumération:
+Une fois déclarée, une énumération peut être utilisée pour déclarer des variables, passer des arguments à des fonctions et effectuer des comparaisons. Les valeurs d'une énumération sont généralement représentées par des entiers, en commençant par 0 pour la première valeur et en augmentant de 1 pour chaque valeur suivante.
+
+Par exemple, le code suivant déclare une variable `jour` de type `Jour` et lui affecte la valeur `LUNDI`:
+```c++
+Jour jour = LUNDI;
+```
+On peut également utiliser les opérateurs de comparaison pour comparer des valeurs d'énumération:
+
+```c++
+if (jour == LUNDI) {
+  std::cout << "C'est lundi !" << std::endl;
+}
+```
+
+### Enum class:
+Introduite en C++11, l'énumération avec classe (`enum class`) offre des fonctionnalités supplémentaires par rapport aux énumérations classiques:
+
+* **Portée forte**: Les noms des valeurs d'énumération sont protégés dans leur propre espace de noms, ce qui évite les conflits de noms avec d'autres identificateurs dans le même portée.
+* **Type fort**: Les valeurs d'énumération sont considérées comme un type distinct, ce qui permet de les utiliser avec des modèles et des algorithmes génériques.
+* **Sécurité des conversions**: Les conversions implicites entre les valeurs d'énumération et les entiers sont interdites, ce qui permet d'éviter les erreurs de type involontaires.
+
+La syntaxe pour déclarer une énumération avec classe est similaire à celle d'une énumération classique, mais avec le mot-clé class ajouté:
+
+```c++
+enum class Jour { LUNDI, MARDI, MERCREDI, JEUDI, VENDREDI, SAMEDI, DIMANCHE };
+```
+L'utilisation d'une énumération avec classe est similaire à celle d'une énumération classique:
+
+```c++
+Jour jour = Jour::LUNDI;
+
+if (jour == Jour::LUNDI) {
+  std::cout << "C'est lundi !" << std::endl;
+}
+```
+
+#### Remraques :
+- Les énumérations classiques et les énumérations avec classe sont compatibles entre elles.
+- Il est généralement recommandé d'utiliser des énumérations avec classe pour les nouveaux projets C++ en raison de leurs avantages en matière de sécurité et de lisibilité du code.
