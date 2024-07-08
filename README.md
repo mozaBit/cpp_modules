@@ -575,3 +575,338 @@ Dans cet exemple, le programme affichera le jour de la semaine correspondant à 
 * Le `break` est crucial après chaque bloc case pour éviter l'exécution des blocs suivants.
 * Le `default` est facultatif mais recommandé pour gérer les valeurs non attendues.
 * Le `switch` peut également être utilisé avec des chaînes de caractères et des énumérations.
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+## Les boucles WHILE en C++:
+En C++, les boucles `while` **permettent d'exécuter un bloc de code de manière répétée** tant qu'une condition donnée reste vraie. Elles sont utiles pour des tâches répétitives ou des itérations basées sur une condition.
+
+#### Syntaxe de base:
+```c++
+while (condition) {
+  // Code à exécuter tant que la condition est vraie
+}
+```
+- `condition`: Une expression booléenne qui détermine la poursuite de l'itération de la boucle.
+- `Code à exécuter`: Le bloc de code à répéter tant que la condition est vraie.
+
+#### Exemple:
+```c++
+int i = 0;
+
+while (i < 10) {
+  std::cout << i << " ";
+  i++;
+}
+```
+Dans cet exemple, la boucle affichera les nombres de 0 à 9 inclusivement. La condition `i < 10` devient fausse après la dixième itération, ce qui entraîne la sortie de la boucle.
+
+#### Remarques:
+
+- La condition est évaluée avant chaque itération de la boucle.
+- La boucle s'exécute tant que la condition est vraie.
+- Il est crucial d'éviter les boucles infinies en s'assurant que la condition change et finit par devenir fausse.
+- Les boucles while sont souvent utilisées avec des compteurs ou des itérations basées sur des conditions.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+## Les boucles FOR en C++:
+En C++, Les boucles `for` (comme les boucles `while`) permettent d'exécuter un bloc de code de manière répétée, généralement pour un nombre défini d'itérations ou pour parcourir des séquences de données. Elles offrent une structure concise et efficace pour les boucles itératives.
+
+#### Syntaxe de base:
+```c++
+for (initialisation; condition; incrémentation) {
+  // Code à exécuter à chaque itération
+}
+```
+
+- `initialisation`: Expression initialisée avant la boucle.
+- `condition`: Expression booléenne évaluée avant chaque itération. La boucle s'exécute tant que la condition est vraie.
+- `incrémentation`: Expression exécutée après chaque itération.
+- `Code à exécuter`: Le bloc de code à répéter à chaque itération.
+
+#### Exemples:
+```c++
+for (int i = 0; i < 10; i++) {
+  std::cout << i << " ";
+}
+```
+Dans cet exemple, la boucle affichera les nombres de 0 à 9 inclusivement. L'initialisation `int i = 0` définit une variable de comptoir `i` à 0. La condition `i < 10` vérifie si `i` est inférieur à 10. L'incrémentation `i++` augmente la valeur de `i` de 1 après chaque itération.
+
+### Boucle `for` étendue:
+```c++
+for (type_variable nom_variable : expression_range) {
+  // Code à exécuter pour chaque élément de la plage
+}
+```
+- `type_variable:` Type de la variable d'itération.
+- `nom_variable:` Nom de la variable d'itération.
+- `expression_range:` Expression définissant la plage d'éléments à parcourir.
+
+#### Exemple:
+```c++
+std::string prenoms[] = {"Alice", "Bob", "Charlie"};
+
+for (std::string prenom : prenoms) {
+  std::cout << prenom << " " << std::endl;
+}
+```
+Dans cet exemple, la boucle affichera chaque prénom du tableau `prenoms`. La variable d'itération `prenom` de type `std::string` parcourt chaque élément du tableau.
+
+#### Remarques:
+
+- Les trois parties de la boucle `for` (initialisation, condition, incrémentation) peuvent être omises ou modifiées selon les besoins.
+- Les boucles `for` sont souvent utilisées pour parcourir des tableaux, des listes ou d'autres séquences de données.
+- Elles offrent une structure plus concise et plus lisible pour les itérations prévisibles.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+## Les mots-clés `break` et `continue` et `return` en C++:
+En C++ les mots-clés `break` et `continue` et `return` **sont utilisés pour contrôler le flux d'exécution des boucles en C++**. Ils permettent de modifier le comportement normal des boucles en fonction de conditions spécifiques.
+
+1. `break`:
+	* **Fonctionnement**:
+		- Fait sortir de la boucle en cours d'exécution.
+		- Transfère le contrôle du programme à l'instruction suivant la boucle.
+	* **Utilisations**:
+		- Sortir d'une boucle lorsqu'une condition spécifique est rencontrée.
+		- Quitter une boucle itérative avant la fin de la séquence.
+	* **Exemple**:
+```c++
+for (int i = 0; i < 10; i++) {
+  if (i == 5) {
+    break; // Sortir de la boucle lorsque i atteint 5
+  }
+  std::cout << i << " ";
+}
+```
+
+2. `continue`:
+	* **Fonctionnement**:
+		- Omet l'itération actuelle de la boucle en cours..
+		- Passe à l'itération suivante de la boucle.
+	* **Utilisations**:
+		- Ignorer certaines itérations spécifiques dans une boucle.
+		- Exécuter uniquement certaines parties d'une boucle.
+	* **Exemple**:
+```c++
+for (int i = 0; i < 10; i++) {
+  if (i % 2 == 0) {
+    continue; // Ignorer les itérations pour les nombres pairs
+  }
+  std::cout << i << " ";
+}
+```
+
+3. `return`:
+	* **Fonctionnement**:
+		- Fait sortir de la fonction en cours d'exécution.
+		- Transfère le contrôle du programme à l'instruction qui a appelé la fonction.
+		- **Peut optionnellement renvoyer une valeur** à la fonction appelante.
+	* **Utilisations**:
+		- Signaler la fin de l'exécution d'une fonction.
+		- Renvoyer des données ou des résultats d'une fonction.
+		- Quitter une fonction prématurément en cas d'erreur ou de condition spécifique.
+	* **Exemple**:
+```c++
+int calcul_fact(int n) {
+  if (n == 0) {
+    return 1; // Renvoyer 1 si n est 0
+  }
+  return n * calcul_fact(n - 1); // Renvoyer le factoriel de n
+}
+```
+
+#### Remarques:
+
+- `break` et `continue` s'utilisent uniquement dans les boucles.
+- `return` s'utilise dans les fonctions et les boucles.
+- L'utilisation de `return` avec une valeur implique de la recevoir dans la fonction appelante.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+## Les fonctions en C++:
+Les fonctions sont des blocs de code réutilisables qui effectuent des tâches spécifiques. Elles permettent d'organiser le code, de le rendre plus modulaire et d'éviter les redondances.
+
+### Déclaration d'une fonction:
+La déclaration d'une fonction indique au compilateur le nom de la fonction, le type de retour et les paramètres attendus. Elle permet d'utiliser la fonction avant sa définition complète.
+
+#### Syntaxe de base:
+```c++
+type_retour nom_fonction(liste_parametres);
+auto nom_fonction(liste_parametres) -> type_retour; //c++11
+```
+#### Exemple:
+```c++
+int additionner(int a, int b); // Déclaration de la fonction "additionner"
+auto additionner(int a, int b) -> int; //c++11
+```
+
+### Définition d'une fonction:
+La définition d'une fonction fournit le corps du code qui sera exécuté lorsque la fonction est appelée. Elle comprend les instructions nécessaires pour accomplir la tâche de la fonction.
+
+#### Syntaxe de base:
+```c++
+type_retour nom_fonction(liste_parametres) {
+  // Corps de la fonction
+  return valeur_retour;
+}
+```
+#### Exemple:
+```c++
+int additionner(int a, int b) {
+  return a + b; // Définition de la fonction "additionner"
+}
+```
+
+### Fonctions membre (méthodes):
+Les fonctions membre, appelées aussi méthodes, sont des fonctions associées à une classe ou à un objet. Elles permettent d'accéder aux données membres et d'opérer sur l'état de l'objet.
+
+
+#### Déclaration et définition:
+```c++
+class NomClasse {
+public:
+  type_retour nom_methode(liste_parametres); // Déclaration
+  // ...
+  type_retour nom_methode(liste_parametres) {
+    // Corps de la méthode
+    // ...
+  } // Définition
+};
+```
+
+#### Exemple:
+```c++
+class Point {
+public:
+  int x, y;
+  double distanceOrigine() { // Déclaration de la méthode "distanceOrigine"
+    return sqrt(x * x + y * y); // Définition de la méthode
+  }
+};
+```
+#### Utilisation:
+```c++
+Point p1(3, 4);
+double distance = p1.distanceOrigine(); // Appel de la méthode
+```
+
+#### Remarques:
+- Une fonction peut être déclarée plusieurs fois, mais définie une seule fois.
+- Les fonctions membre peuvent accéder aux données membres de la classe.
+- Les fonctions non-membres n'ont pas d'accès direct aux données membres des classes.
+- Le choix entre une fonction membre et une fonction non-membre dépend de la relation avec les données et la classe.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+## Surcharge de fonctions, Passage de paramètres et Types de paramètres en C++:
+
+**En C++, La surcharge de fonctions permet de créer plusieurs fonctions avec le même nom mais des paramètres ou des types de retour différents.** Cela offre une flesxibilité et une lisibilité accrues au code.
+
+### Syntaxe de base:
+```c++
+type_retour nom_fonction(liste_parametres1);
+type_retour nom_fonction(liste_parametres2);
+...
+```
+### Exemple:
+```c++
+int additionner(int a, int b); // Surcharge pour des entiers
+double additionner(double a, double b); // Surcharge pour des flottants
+```
+
+### Passage de paramètres:
+Lorsqu'une fonction est appelée, des valeurs sont transmises aux paramètres de la fonction. Le passage de paramètres peut se faire de différentes manières:
+
+1. Passage par valeur:
+- La valeur réelle de l'argument est copiée dans le paramètre de la fonction.
+- Toute modification apportée au paramètre n'affecte pas l'argument d'origine.
+
+#### Exemple:
+```c++
+void echanger(int a, int b) {
+  int temp = a;
+  a = b;
+  b = temp;
+}
+
+int x = 5, y = 10;
+echanger(x, y); // x est toujours 5, y est toujours 10
+```
+
+2. Passage par pointeur:
+- L'adresse mémoire de l'argument est transmise à la fonction.
+- La fonction peut modifier la valeur de la variable d'origine en utilisant l'adresse mémoire.
+
+#### Exemple:
+```c++
+void echanger(int *a, int *b) {
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
+int x = 5, y = 10;
+echanger(&x, &y); // x vaut maintenant 10, y vaut maintenant 5
+```
+
+3. Passage par référence:
+- Une référence à l'argument est transmise à la fonction.
+- La fonction a un accès direct à la variable d'origine et peut la modifier.
+
+#### Exemple:
+```c++
+void echanger(int &a, int &b) {
+  int temp = a;
+  a = b;
+  b = temp;
+}
+
+int x = 5, y = 10;
+echanger(x, y); // x vaut maintenant 10, y vaut maintenant 5
+```
+### Paramètres par défaut:
+Les paramètres par défaut permettent d'attribuer des valeurs initiales aux paramètres d'une fonction. Si aucune valeur n'est fournie lors de l'appel de la fonction, la valeur par défaut est utilisée.
+
+#### Syntaxe de base:
+```c++
+type_retour nom_fonction(param1=valeur_par_defaut1, param2=valeur_par_defaut2, ...);
+```
+#### Exemple:
+```c++
+int multiplier(int a, int b = 2) {
+  return a * b;
+}
+
+int resultat1 = multiplier(5); // resultat1 vaut 10 (b utilise la valeur par défaut 2)
+int resultat2 = multiplier(5, 3); // resultat2 vaut 15
+```
+
+### Différences et impacts:
+- Passage par valeur:
+	* Simple et efficace pour les petites valeurs.
+	* Ne modifie pas les arguments d'origine.
+	* Peut créer des copies inutiles pour les gros types de données.
+- Passage par pointeur:
+	* Permet une modification directe des arguments d'origine.
+	* Plus efficace pour les gros types de données.
+	* Exige une gestion rigoureuse des pointeurs pour éviter les fuites de mémoire et les erreurs de segmentation.
+- Passage par référence:
+	* Offre une modification directe des arguments d'origine comme le passage par pointeur.
+	* Plus lisible et plus sûr que le passage par pointeur.
+	* Peut avoir un impact sur les performances pour les fonctions complexes.
