@@ -417,3 +417,161 @@ if (jour == Jour::LUNDI) {
 #### Remraques :
 - Les énumérations classiques et les énumérations avec classe sont compatibles entre elles.
 - Il est généralement recommandé d'utiliser des énumérations avec classe pour les nouveaux projets C++ en raison de leurs avantages en matière de sécurité et de lisibilité du code.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+## L'instruction IF et ELSE en C++
+En C++, Les instructions `if` et `else` sont des éléments fondamentaux du contrôle du flux d'un programme en C++. Elles permettent aux programmeurs d'exécuter différents blocs de code en fonction de conditions spécifiques. Elles sont essentielles pour prendre des décisions et orienter le chemin d'exécution du programme.
+
+### Instruction if de base:
+L'instruction `if` de base a la syntaxe suivante :
+```c++
+if (expression_booléenne) {
+  // Code à exécuter si la condition est vraie
+}
+```
+Dans cette structure, l'expression_booléenne est évaluée. Si elle donne true (`vrai`), le bloc de code entre les accolades (`{}`) est exécuté. Si l'expression_booléenne donne false (`faux`), le bloc de code est ignoré.
+
+#### Exemple :
+```c++
+int age = 25;
+
+if (age >= 18) {
+  std::cout << "Vous êtes un adulte." << std::endl;
+}
+```
+Dans cet exemple, si la valeur de `age` est 18 ou plus, l'instruction `std::cout << "Vous êtes un adulte." << std::endl;` sera exécutée, indiquant que la personne est adulte.
+
+### Instruction else:
+L'instruction `else` est utilisée conjointement avec l'instruction `if` pour fournir un bloc de code alternatif à exécuter lorsque la condition `if` est `false` (fausse).
+
+```c++
+if (expression_booléenne) {
+  // Code à exécuter si la condition est vraie
+} else {
+  // Code à exécuter si la condition est fausse
+}
+```
+
+#### Exemple :
+```c++
+int age = 15;
+
+if (age >= 18) {
+  std::cout << "Vous êtes un adulte." << std::endl;
+} else {
+  std::cout << "Vous êtes mineur." << std::endl;
+}
+```
+Dans cet exemple, si la valeur de `age` est inférieure à 18, l'instruction `std::cout << "Vous êtes mineur." << std::endl;` sera exécutée, indiquant que la personne est mineure.
+
+### Instruction else if:
+L'instruction `else if` permet d'effectuer des vérifications conditionnelles multiples au sein d'un bloc if. Elle a la syntaxe suivante :
+
+```c++
+if (condition1) {
+  // Code à exécuter si condition1 est vraie
+} else if (condition2) {
+  // Code à exécuter si condition2 est vraie
+} else {
+  // Code à exécuter si aucune des conditions n'est vraie
+}
+```
+Dans cette structure, `condition1` est évaluée en premier. Si elle donne `true` (vrai), le bloc de code correspondant est exécuté, et les instructions `else if` et `else` restantes sont ignorées. Si `condition1` est `false` (faux), la condition `else if` suivante (`condition2`) est évaluée, et ainsi de suite. Si aucune des conditions n'est `true` (vraie), le bloc `else` final est exécuté.
+
+#### Exemple :
+```c++
+int note = 85;
+
+if (note >= 90) {
+  std::cout << "Mention A" << std::endl;
+} else if (note >= 80) {
+  std::cout << "Mention B" << std::endl;
+} else if (note >= 70) {
+  std::cout << "Mention C" << std::endl;
+} else {
+  std::cout << "Échec" << std::endl;
+}
+```
+Dans cet exemple, en fonction de la valeur de `note`, la mention correspondante sera affichée.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+## Le mot-clé switch en C++:
+Le mot-clé `switch` en C++ permet d'exécuter un bloc de code spécifique en fonction de la valeur d'une expression. Il offre une alternative plus structurée aux instructions `if imbriquées` pour gérer des choix multiples.
+
+```c++
+switch (expression) {
+  case valeur1:
+    // Code à exécuter si l'expression correspond à valeur1
+    break;
+  case valeur2:
+    // Code à exécuter si l'expression correspond à valeur2
+    break;
+  ...
+  default:
+    // Code à exécuter si aucune valeur ne correspond
+}
+```
+#### Explication :
+* `expression`: Une expression dont la valeur sera comparée aux valeurs des case.
+* `case`: Des blocs de code spécifiques à exécuter en fonction de la valeur correspondante de l'expression.
+* `break`: Indique la fin d'un bloc case et empêche l'exécution des blocs suivants.
+* `default`: Un bloc de code optionnel à exécuter si aucune valeur case ne correspond.
+
+### Exemple :
+```c++
+int jour = 3;
+
+switch (jour) {
+  case 1:
+    std::cout << "Lundi" << std::endl;
+    break;
+  case 2:
+    std::cout << "Mardi" << std::endl;
+    break;
+  case 3:
+    std::cout << "Mercredi" << std::endl;
+    break;
+  case 4:
+    std::cout << "Jeudi" << std::endl;
+    break;
+  case 5:
+    std::cout << "Vendredi" << std::endl;
+    break;
+  case 6:
+    std::cout << "Samedi" << std::endl;
+    break;
+  case 7:
+    std::cout << "Dimanche" << std::endl;
+    break;
+  default:
+    std::cout << "Jour invalide" << std::endl;
+}
+```
+Dans cet exemple, le programme affichera le jour de la semaine correspondant à la valeur de la variable jour.Dans cet exemple, le programme affichera le jour de la semaine correspondant à la valeur de la variable jour.
+
+#### Avantages du `switch`:
+- Structure claire et organisée pour gérer des choix multiples.
+- Plus lisible et plus facile à maintenir que les if imbriquées pour des cas complexes.
+- Exécution plus efficace grâce au saut direct au bloc correspondant.
+
+#### Remarques :
+
+* Le `break` est crucial après chaque bloc case pour éviter l'exécution des blocs suivants.
+* Le `default` est facultatif mais recommandé pour gérer les valeurs non attendues.
+* Le `switch` peut également être utilisé avec des chaînes de caractères et des énumérations.
