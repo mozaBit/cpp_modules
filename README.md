@@ -572,7 +572,7 @@ Dans cet exemple, le programme affichera le jour de la semaine correspondant à 
 
 #### Remarques :
 
-* Le `break` est crucial après chaque bloc case pour éviter l'exécution des blocs suivants.
+* Le `break` est **crucial** après chaque bloc case pour éviter l'exécution des blocs suivants.
 * Le `default` est facultatif mais recommandé pour gérer les valeurs non attendues.
 * Le `switch` peut également être utilisé avec des chaînes de caractères et des énumérations.
 
@@ -910,3 +910,409 @@ int resultat2 = multiplier(5, 3); // resultat2 vaut 15
 	* Offre une modification directe des arguments d'origine comme le passage par pointeur.
 	* Plus lisible et plus sûr que le passage par pointeur.
 	* Peut avoir un impact sur les performances pour les fonctions complexes.
+
+  --------------------------------------------------------------------------------------------------------------------------------
+
+  ## Utilisation de CONST et mutable en C++:
+
+### Le mot-clé `const` en C++:
+Le mot-clé `const` est utilisé en C++ pour indiquer qu'une valeur ne doit pas être modifiée. Il sert à améliorer la sécurité du code, à prévenir les erreurs accidentelles et à optimiser le code.
+
+### `const` dans les paramètres de fonctions:
+
+- **Protection des données:** En déclarant un paramètre comme `const`, on garantit que la fonction ne modifiera pas la valeur de l'argument passé. Cela évite les modifications inattendues et les erreurs de programmation.
+- **Optimisation:** Le compilateur peut effectuer des optimisations lorsque les paramètres sont déclarés const, car il sait que leur valeur ne changera pas.
+- **Amélioration de la lisibilité:** Le mot-clé `const` rend le code plus clair et plus explicite en indiquant clairement l'intention du programmeur.
+
+#### Exemple:
+```c++
+void afficher(const int x) {
+  std::cout << x << std::endl; // x ne peut pas être modifié dans cette fonction
+}
+```
+
+### Membres `const` d'une classe ou d'une structure:
+
+- **Objets constants:** Lorsqu'un objet est déclaré comme `const`, toutes ses données membres sont également constantes. Cela signifie qu'aucune de ses données ne peut être modifiée après la création de l'objet.
+
+- **Fonctions membres `const`:** Une fonction membre déclarée `const` garantit qu'elle ne modifiera pas l'état de l'objet. Elle peut être appelée sur des objets constants.
+
+#### Exemple:
+```c++
+class Point {
+public:
+  int x, y;
+  void afficher() const { // Fonction membre const
+    std::cout << "(" << x << ", " << y << ")" << std::endl;
+  }
+};
+
+const Point p(3, 4);
+p.afficher(); // Appel de la fonction membre const sur un objet const
+```
+
+### Le mot-clé `mutable`:
+Le mot-clé `mutable` permet de marquer un membre de données d'une classe comme modifiable, même si l'objet est déclaré const. Il est généralement utilisé pour des membres qui représentent des états internes ou des caches.
+
+#### Exemple:
+
+```c++
+class Point {
+public:
+  int x, y;
+  mutable int compteur_acces; // Compteur d'accès, modifiable même si l'objet est const
+
+  void afficher() const {
+    compteur_acces++; // Incrémente le compteur, autorisé car mutable
+    std::cout << "(" << x << ", " << y << ")" << std::endl;
+  }
+};
+```
+
+#### En résumé:
+- `const` est un mot-clé puissant pour garantir l'immuabilité des données et améliorer la sécurité du code.
+- Les paramètres de fonctions, les objets et les fonctions membres peuvent être déclarés `const`.
+- `mutable` permet de marquer des membres de données comme modifiables, même dans un contexte const, pour des cas spécifiques.
+- L'utilisation judicieuse de `const` et `mutable` contribue à un code plus sûr, plus lisible et plus maintenable.
+
+#### Cas d'utilisation courants de `const`:
+- **Paramètres de fonctions:** Pour protéger les données passées en argument.
+- **Retour de fonctions:** Pour indiquer que la valeur retournée ne sera pas modifiée.
+- **Pointeurs:** Pour indiquer qu'un pointeur pointe vers une donnée constante.
+- **Références:** Pour indiquer qu'une référence ne peut pas être utilisée pour modifier la valeur sous-jacente.
+
+  --------------------------------------------------------------------------------------------------------------------------------
+
+## Fonctions `inline` et les espaces de nommage en C++:
+
+### Fonctions `inline`:
+Le mot-clé `inline` est une suggestion au compilateur pour qu'il insère le corps d'une fonction directement à l'endroit de chaque appel, plutôt que de générer un appel de fonction traditionnel.
+
+- **Avantages**:
+  * Performance: Peut améliorer les performances en évitant le coût d'appel de fonction, surtout pour les petites fonctions appelées fréquemment.
+  * Lisibilité: Rend le code plus compact pour certaines opérations simples.
+- **Utilisation:**
+  * Petites fonctions: Les fonctions `inline` sont particulièrement efficaces pour les fonctions de quelques lignes.
+  * Accesseurs et mutateurs: Les getters et setters sont souvent déclarés `inline` pour optimiser l'accès aux membres d'une classe.
+- **Limitations**
+  * Taille du code: Un usage excessif peut augmenter la taille du code exécutable.
+
+#### Exemple:
+```c++
+inline int square(int x) {
+    return x * x;
+}
+```
+
+### Les espaces de nommage:
+Les espaces de noms servent à organiser le code en regroupant des entités (variables, fonctions, classes) sous un nom spécifique. Cela permet d'éviter les conflits de noms, surtout dans les grands projets.
+
+- **Avantages**:
+  * Organisation: Structure le code en modules logiques, améliorant la maintenabilité.
+  * Évitement des conflits: Permet d'utiliser le même nom pour des entités différentes dans des contextes différents.
+
+#### Exemple:
+```c++
+namespace Geometry {
+    inline double area(double radius) {
+        return 3.14159 * radius * radius;
+    }
+}
+```
+
+#### Remarques:
+- Les fonctions `inline` et les espaces de noms sont des outils précieux pour améliorer la qualité et la performance de votre code C++. Ils permettent d'optimiser le code et d'organiser votre projet de manière plus efficace.
+- L'efficacité de l'inlining dépend de nombreux facteurs, notamment du compilateur et de l'architecture du processeur. Il est donc important d'utiliser cette fonctionnalité avec discernement.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+## Déclaration d'une classe en C++:
+Une classe en C++ est un plan qui définit les propriétés (données membres) et les comportements (fonctions membres) d'un objet. La déclaration d'une classe introduit un nouveau type de données personnalisé.
+#### Syntaxe de base:
+```c++
+class NomDeLaClasse {
+    // Données membres (attributs)
+    type nom_attribut1;
+    type nom_attribut2;
+    // ...
+
+    // Fonctions membres (méthodes)
+    type nom_methode1(liste_parametres);
+    type nom_methode2(liste_parametres);
+    // ...
+};
+```
+#### Exemlpes:
+```c++
+class Point {
+public:
+    int x, y; // Données membres (coordonnées)
+
+    // Fonction membre pour afficher les coordonnées
+    void afficher() {
+        std::cout << "Coordonnées : (" << x << ", " << y << ")" << std::endl;
+    }
+};
+```
+Dans cet exemple:
+- `Point` est le nom de la classe.
+- `x` et `y` sont les données membres de type `int` qui représentent les coordonnées d'un point.
+- `afficher` est une fonction membre qui permet d'afficher les coordonnées d'un point.
+
+### Création d'objets (instanciation):
+Pour utiliser une classe, il faut créer des objets de cette classe. On appelle cela l'instanciation.
+
+```c++
+Point p1; // Création d'un objet de la classe Point
+p1.x = 3;
+p1.y = 4;
+p1.afficher(); // Affiche les coordonnées du point
+```
+
+### Données membres et fonctions membres:
+
+- **Données membres:** Ce sont les variables associées à une classe. Elles représentent les attributs ou les propriétés d'un objet de cette classe.
+
+- **Fonctions membres:** Ce sont les fonctions associées à une classe. Elles définissent les actions que les objets de cette classe peuvent effectuer. On les appelle aussi méthodes.
+
+### Mots-clés public et private:
+Les mots-clés `public` et `private` contrôlent l'accessibilité aux membres d'une classe depuis l'extérieur de celle-ci.
+
+* **public**: Les membres déclarés public sont accessibles depuis n'importe où dans le programme.
+
+* **private**: Les membres déclarés private ne sont accessibles qu'à l'intérieur de la classe elle-même.
+
+#### Exemple:
+```c++
+class Personne {
+public:
+    std::string nom; // Accessible de l'extérieur
+    int age;
+
+private:
+    std::string adresse; // Inaccessible de l'extérieur
+};
+```
+Dans cet exemple:
+- `nom` et `age` peuvent être modifiés ou consultés depuis n'importe où dans le programme.
+- `adresse` ne peut être modifiée ou consultée qu'à l'intérieur de la classe `Personne`.
+
+* **Anvatages de l'utilisation de `private`:**
+  - **Encapsulation:** Protéger les données internes de la classe contre les modifications accidentelles.
+  - **Sécurité:** Empêcher un accès non autorisé aux données sensibles.
+  - **Modularité:** Faciliter la maintenance et la réutilisation du code.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+  ## Les Struct en C++:
+En C++, la Struct est exactement comme une classe a une différence:
+#### Accessibilité par défaut :
+  * **Struct:**  Les membres d'une structure sont publics par défaut. Cela signifie qu'ils sont accessibles de n'importe où où la structure est visible.
+  * **Class:** Les membres d'une classe sont privés par défaut. Pour les rendre accessibles, il faut les déclarer explicitement comme `public`.
+
+Historiquement, les structures étaient utilisées principalement pour regrouper des données simples, tandis que les classes étaient plus orientées vers la modélisation de concepts complexes. L'accessibilité publique par défaut des structures reflétait cette utilisation plus simple. Cependant, en C++, les deux peuvent être utilisés de manière interchangeable.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+## Utilisation des objets : Variables, références et pointeurs:
+Une fois qu'une classe ou une structure est définie, on peut créer des instances de cette classe, c'est-à-dire des objets. Ces objets peuvent être utilisés comme des variables, des références ou des pointeurs.
+
+- **Variables:**
+  * L'objet est créé et stocké dans une variable.
+  * Les modifications apportées à l'objet affectent uniquement cette variable.
+  * Exemple:
+```c++
+struct Point {
+    int x, y;
+};
+
+Point p1; // Création d'un objet Point
+p1.x = 3; // Modification de la coordonnée x
+```
+
+- **Références:**
+  * La référence est un alias pour l'objet.
+  * Toute modification apportée à la référence affecte directement l'objet.
+  * Exemple:
+```c++
+Point p2;
+Point& ref = p2; // ref est une référence à p2
+ref.x = 5; // Modifie également p2.x
+```
+
+- **Pointeurs:**
+  * Le pointeur stocke l'adresse mémoire de l'objet.
+  * Il permet d'accéder aux membres de l'objet en utilisant l'opérateur `->`.
+  * Exemple:
+```c++
+Point* ptr = &p1; // ptr pointe vers p1
+ptr->y = 10; // Modifie la coordonnée y de p1
+```
+
+### Quand utiliser quoi ?
+ - **Variable:** Pour une utilisation simple et directe d'un objet.
+ - **Références:** Pour éviter de créer des copies d'objets volumineux et pour passer des objets en argument de fonction sans risque de modification accidentelle.
+ - **Pointeurs:** Pour une flexibilité maximale, notamment pour gérer des tableaux dynamiques, des structures de données complexes et pour implémenter des concepts comme l'héritage et le polymorphisme.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+## Les constructeurs en C++ :
+En C++, le constructeur est une méthode spéciale d'une classe qui est appelée automatiquement lorsqu'un objet de cette classe est créé. Il sert à initialiser les membres de l'objet.
+
+### Syntaxe de base:
+```c++
+class NomDeLaClasse {
+public:
+    NomDeLaClasse() { // Constructeur par défaut
+        // Initialisation des membres
+    }
+    NomDeLaClasse(type param1, type param2) { // Constructeur avec paramètres
+        // Initialisation des membres avec les paramètres
+    }
+    // ... Autres constructeurs
+};
+```
+
+### Caractéristiques des constructeurs :
+- **Même nom que la classe:** Le nom du constructeur doit être identique au nom de la classe.
+- **Pas de type de retour:** Un constructeur ne retourne rien, pas même `void`.
+- **Peut avoir des paramètres:** Les constructeurs peuvent prendre des paramètres pour initialiser les membres de l'objet.
+
+### Types de constructeurs:
+- **Constructeur par défaut:**
+  * N'a aucun paramètre.
+  * Initialise les membres à leurs valeurs par défaut.
+- **Constructeur paramétré:**
+  * Prend des paramètres pour initialiser les membres de l'objet.
+- **Constructeur de copie:**
+  * Initialise un objet à partir d'un autre objet de la même classe.
+- **Constructeur de déplacement:**
+  * Déplace les ressources d'un objet vers un autre.
+
+### Chaînage des constructeurs:
+Le chaînage de constructeurs permet d'appeler un constructeur à partir d'un autre constructeur de la même classe. Cela est utile pour éviter la duplication de code et pour fournir des constructeurs avec des niveaux d'initialisation différents.
+
+```c++
+class Personne {
+  int age;
+  std::string nom;
+public:
+    Personne(std::string nom) : nom(nom) {} // Constructeur par default + ZIM
+    Personne(std::string nom, int age) : Personne(nom), age(age) {} // Chaînage de deux constructeurs
+    // ...
+};
+```
+
+### La Zone d'Initialisation des Membres (ZIM)
+
+La ZIM est une partie essentielle de la déclaration d'un constructeur. Elle permet d'initialiser les membres d'une classe avant que le corps du constructeur ne soit exécuté. Cela garantit que les membres sont dans un état valide dès le début de la construction de l'objet.
+
+### Syntaxe de ZIM:
+```c++
+class MaClasse {
+public:
+    MaClasse(type param1, type param2) : membre1(param1), membre2(param2) {
+        // Corps du constructeur
+    }
+private:
+    type membre1;
+    type membre2;
+};
+```
+
+#### Avantages de la ZIM:
+-   Ordre d'initialisation garanti: Les membres sont initialisés dans l'ordre de leur déclaration dans la classe, même si leur ordre d'initialisation dans la liste d'initialisation est différent.
+-   Initialisation de membres const: Les membres constants doivent être initialisés dans la ZIM.
+-   Initialisation de références: Les références doivent être initialisées dans la ZIM.
+
+### Le Constructeur de Copie:
+Le constructeur de copie est un constructeur spécial qui est appelé lorsqu'un objet est créé en copiant un objet existant. Il est utilisé pour créer une copie d'un objet.
+
+#### Syntaxe de base:
+```c++
+MaClasse(const MaClasse& autre);
+```
+#### Exemple:
+```c++
+class Point {
+public:
+    int x, y;
+    Point(int x, int y) : x(x), y(y) {}
+    Point(const Point& autre) : x(autre.x), y(autre.y) {}
+};
+```
+#### l'intérêt du constructeur de copie:
+
+- **Copie profonde:** Pour les classes qui contiennent des pointeurs ou d'autres ressources, il est souvent nécessaire de redéfinir le constructeur de copie pour effectuer une copie profonde, c'est-à-dire copier les données pointées par les pointeurs plutôt que de copier simplement les pointeurs eux-mêmes. Cela évite les problèmes de partage de ressources entre les objets.
+
+- **Personnalisation:** Pour ajouter un comportement personnalisé lors de la copie d'un objet.
+
+### Constructeur de Déplacement(move):
+Le constructeur de déplacement est un mécanisme optimisé pour déplacer les ressources d'un objet à un autre, plutôt que de les copier. Il est particulièrement utile lorsque l'on travaille avec des objets volumineux ou des ressources coûteuses à copier (comme des tableaux dynamiques ou des descripteurs de fichiers).
+
+#### Syntaxe:
+```c++
+MaClasse(MaClasse&& autre) noexcept;
+```
+#### Exemple:
+```c++
+#include <iostream>
+#include <vector>
+
+class Vecteur {
+public:
+    std::vector<int> data;
+
+    Vecteur(std::vector<int>&& v) noexcept : data(std::move(v)) {}
+    // ... autres constructeurs et méthodes
+};
+
+int main() {
+    Vecteur v1 = {1, 2, 3};
+    Vecteur v2 = std::move(v1); // Déplacement de v1 vers v2
+
+    // Après le déplacement, v1 est dans un état valide mais indéfini
+    // Il est généralement préférable de ne plus utiliser v1 après un déplacement
+}
+```
+### Le Destructeur en C++ :
+Le destructeur est une méthode spéciale d'une classe qui est appelée automatiquement lorsqu'un objet est détruit. Il sert à libérer les ressources allouées par l'objet, telles que la mémoire, les fichiers, les connexions réseau, etc.
+
+#### Syntaxe:
+```c++
+~NomDeLaClasse() {
+    // Code de destruction
+}
+```
+#### Exemple:
+```c++
+#include <iostream>
+
+class Ressource {
+public:
+    Ressource() {
+        std::cout << "Ressource créée" << std::endl;
+    }
+    ~Ressource() {
+        std::cout << "Ressource détruite" << std::endl;
+    }
+};
+
+int main() {
+    Ressource res; // Création d'un objet
+}
+```
