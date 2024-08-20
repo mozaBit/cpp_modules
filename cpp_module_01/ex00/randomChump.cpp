@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 16:24:58 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/08/15 16:30:44 by bmetehri         ###   ########.fr       */
+/*   Created: 2024/08/15 16:17:47 by bmetehri          #+#    #+#             */
+/*   Updated: 2024/08/20 17:02:41 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 #include <string>
 #include "Zombie.hpp"
 
-Zombie*	zombieHorde( int N, std::string name ) {
-	Zombie*	zombies;
+void		randomChump( std::string name ) {
+	Zombie	newZombie(name);
 
-	zombies = new Zombie("Shanes");
-	return (zombies);
-}
+	newZombie.annonce();
+};

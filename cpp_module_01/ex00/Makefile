@@ -6,12 +6,12 @@
 #    By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/04 11:48:26 by bmetehri          #+#    #+#              #
-#    Updated: 2024/08/15 16:03:15 by bmetehri         ###   ########.fr        #
+#    Updated: 2024/08/20 16:21:46 by bmetehri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Define the compiler and flags
-CXX = g++
+CXX = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Define the target executable
@@ -19,7 +19,9 @@ TARGET = megaphone
 
 # Define the source files
 SRCS =	main.cpp		\
-		Zombie.cpp
+		Zombie.cpp		\
+		newZombie.cpp	\
+		randomChump.cpp
 
 # Define the object files
 OBJS = $(SRCS:.cpp=.o)

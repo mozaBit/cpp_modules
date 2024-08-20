@@ -6,7 +6,7 @@
 #    By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/04 11:48:26 by bmetehri          #+#    #+#              #
-#    Updated: 2024/08/15 16:03:15 by bmetehri         ###   ########.fr        #
+#    Updated: 2024/08/20 17:47:19 by bmetehri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ TARGET = megaphone
 
 # Define the source files
 SRCS =	main.cpp		\
-		Zombie.cpp
+		Zombie.cpp		\
+		ZombieHorde.cpp
 
 # Define the object files
 OBJS = $(SRCS:.cpp=.o)
@@ -35,6 +36,9 @@ clean:
 	-rm $(OBJS) $(TARGET)
 
 re: clean all
+
+vg: re
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(TARGET)
 
 # Define the rules for compiling object files
 $(OBJS): %.o: %.cpp

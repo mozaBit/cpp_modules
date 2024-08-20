@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 15:36:17 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/08/15 16:18:52 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/08/20 16:35:36 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	Zombie::annonce( void )
 Zombie::Zombie(std::string name) : name(name) {};
 
 Zombie::~Zombie() {
-	std::cout << this->name << ": is being destructed" << std::endl;
+	std::cout << this->name << " is being destructed" << std::endl;
 };
