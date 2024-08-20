@@ -6,7 +6,7 @@
 #    By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/04 11:48:26 by bmetehri          #+#    #+#              #
-#    Updated: 2024/08/20 18:06:56 by bmetehri         ###   ########.fr        #
+#    Updated: 2024/08/20 19:26:03 by bmetehri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,10 @@ CXX = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Define the target executable
-TARGET = megaphone
+TARGET = Violence
 
 # Define the source files
-SRCS =	main.cpp		\
-		Zombie.cpp		\
-		ZombieHorde.cpp
+SRCS =	main.cpp
 
 # Define the object files
 OBJS = $(SRCS:.cpp=.o)
