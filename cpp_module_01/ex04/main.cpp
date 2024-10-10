@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 19:26:05 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/09/26 13:47:20 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:55:22 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int	main(int argc, char* argv[])
 			<< std::endl, 1);
 	filename.open(argv[1], std::ios::in);
 	name = argv[1];
-	name.append();
-	outfile.open(name, std::ios::out);
+	name.append(".replace");
+	const char *cname = name.c_str();
+	outfile.open(cname, std::ios::out);
 	if (!filename.is_open())
 			return (filename.close(), std::cout << "Error: Cannot open filename" << std::endl, 1);
 	keyWord = argv[2];
