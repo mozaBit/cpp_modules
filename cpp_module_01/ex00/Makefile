@@ -6,7 +6,7 @@
 #    By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/04 11:48:26 by bmetehri          #+#    #+#              #
-#    Updated: 2024/08/20 16:21:46 by bmetehri         ###   ########.fr        #
+#    Updated: 2024/11/05 10:05:58 by bmetehri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CXX = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Define the target executable
-TARGET = megaphone
+TARGET = zombies
 
 # Define the source files
 SRCS =	main.cpp		\
@@ -37,6 +37,9 @@ clean:
 	-rm $(OBJS) $(TARGET)
 
 re: clean all
+
+vg: all
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(TARGET)
 
 # Define the rules for compiling object files
 $(OBJS): %.o: %.cpp

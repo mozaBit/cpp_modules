@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:38:04 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/08/20 19:21:09 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:25:14 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,8 @@ void	HumanB::attack(void)
 {
 	std::cout << this->name << " attacks with their "
 	<< this->weapon->getType() << std::endl;
+}
+
+HumanB::~HumanB() {
+	delete this->weapon;
 }

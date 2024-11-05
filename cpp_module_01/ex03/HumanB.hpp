@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:26:51 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/08/20 19:15:22 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:24:40 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class HumanB {
 	public:
 		HumanB(std::string name);
 		HumanB(std::string name, Weapon weapon);
+		~HumanB();
 
 
 		void	setWeapon(Weapon weapon);

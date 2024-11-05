@@ -6,7 +6,7 @@
 #    By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/04 11:48:26 by bmetehri          #+#    #+#              #
-#    Updated: 2024/08/20 18:06:56 by bmetehri         ###   ########.fr        #
+#    Updated: 2024/11/05 10:08:29 by bmetehri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CXX = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Define the target executable
-TARGET = megaphone
+TARGET = zombies
 
 # Define the source files
 SRCS =	main.cpp		\
