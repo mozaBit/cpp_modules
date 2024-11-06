@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 19:26:05 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/10/10 15:55:22 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/06 10:10:22 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char* argv[])
 	while (getline(filename, line))
 		plainText += line + "\n";
 	found = plainText.find(keyWord);
-	std::cout << "found = " << found << std::endl;
+	// std::cout << "found = " << found << std::endl;
 	if (found != std::string::npos)
 	{
 		do {
@@ -51,9 +51,10 @@ int	main(int argc, char* argv[])
 			found = plainText.find(keyWord);
 		} while (found != std::string::npos);
 	} else {
-		std::cout << "Oooops! No occurences found of:" << keyWord << std::endl;
+		std::cout << "Oooops! No occurences found of: " << keyWord << std::endl;
 	}
-	std::cout << "this is the new plainText:\n" << plainText << std::endl;
+	// std::cout << "this is the new plainText:\n" << plainText << std::endl;
+	outfile << plainText;
 	filename.close();
 	return (0);
 }

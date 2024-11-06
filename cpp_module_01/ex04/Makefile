@@ -6,7 +6,7 @@
 #    By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/04 11:48:26 by bmetehri          #+#    #+#              #
-#    Updated: 2024/09/25 12:58:07 by bmetehri         ###   ########.fr        #
+#    Updated: 2024/11/06 10:08:31 by bmetehri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,12 +31,13 @@ all: $(TARGET)
 
 # Define the clean rule
 clean:
-	-rm $(OBJS) $(TARGET)
+	rm $(OBJS) $(TARGET)
+	rm ./*.replace
 
 re: clean all
 
-vg: re
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(TARGET)
+vg: all
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(TARGET) text.txt 2 1
 
 # Define the rules for compiling object files
 $(OBJS): %.o: %.cpp
