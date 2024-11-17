@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 18:51:08 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/16 23:26:19 by bmetehri         ###   ########.fr       */
+/*   Created: 2024/11/12 10:56:48 by bmetehri          #+#    #+#             */
+/*   Updated: 2024/11/17 13:48:16 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __SCAVTRAP_HPP__
-# define __SCAVTRAP_HPP__
-
+#include <iostream>
+#include <string>
+#include "DiamondTrap.hpp"
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class ScavTrap : public ClapTrap {
-	private:
+int	main( void ) {
 
-	public:
-		ScavTrap(std::string name);
-		ScavTrap( const ClapTrap & origin );
-		ScavTrap & operator=( const ScavTrap & src );
-		~ScavTrap( void );
+	DiamondTrap	a("Bob");
+	DiamondTrap	b("George");
 
+	a.attack("George");
+	b.attack("Bob");
 
-
-		/*virtual*/ void	attack( const std::string& target );
-		void guardGate();
-};
-
-
-#endif
+	a.whoAmI();
+	b.whoAmI();
+	return (0);
+}

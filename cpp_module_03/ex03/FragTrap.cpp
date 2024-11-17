@@ -25,6 +25,12 @@ FragTrap::FragTrap(const FragTrap &origin) : ClapTrap(origin)
 	std::cout << "FragTrap Copy assignement Constructor called"<< std::endl;
 }
 
+FragTrap &FragTrap::operator=(const FragTrap &src)
+{
+	ClapTrap::operator=(src);
+	return *this;
+}
+
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap Destructor called " << _getName() << " is Destroyed" << std::endl;
