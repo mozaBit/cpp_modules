@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:05:32 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/17 13:46:58 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:15:13 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name) : FragTrap(name), ScavTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name) , FragTrap(name), ScavTrap(name)
 {
 	_name = name;
 	_ClapTrapName = name + "_clap_name";
@@ -25,7 +25,7 @@ DiamondTrap::DiamondTrap(std::string name) : FragTrap(name), ScavTrap(name)
 	_attack = FragTrap::_getAttackDamage();
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &origin) : FragTrap(origin), ScavTrap(origin)
+DiamondTrap::DiamondTrap(const DiamondTrap &origin) : ClapTrap(origin) , FragTrap(origin), ScavTrap(origin)
 {
 	*this = origin;
 }

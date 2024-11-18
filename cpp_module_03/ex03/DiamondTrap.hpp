@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 01:45:00 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/17 13:45:18 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:16:17 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <iostream>
 #include <string>
 
-class DiamondTrap : public FragTrap, public ScavTrap {
+class DiamondTrap : public FragTrap,  public ScavTrap {
 	private:
 		std::string	_name;
 		std::string	_ClapTrapName;

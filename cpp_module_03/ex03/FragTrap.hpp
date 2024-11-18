@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 22:18:59 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/17 13:15:02 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/17 16:07:06 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class FragTrap : public ClapTrap {
+class FragTrap : virtual public ClapTrap {
 	public:
 		FragTrap(std::string name);
 		FragTrap(const FragTrap & origin);
