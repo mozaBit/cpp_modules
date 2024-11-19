@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:45:15 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/18 12:12:27 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:43:10 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <string>
 #include "Animal.hpp"
 
-Animal::Animal(std::string type) : type(type) {
+Animal::Animal(std::string type) : _type(type) {
 	std::cout << "Creating a new instance of Animal" << std::endl;
 }
 
@@ -24,11 +24,16 @@ Animal::Animal(const Animal &origin) {
 }
 
 Animal & Animal::operator=( const Animal & src ) {
-	*this = src;
-	return *this;
+	this->_type = src._type;
 	std::cout << "Copy Assigning Animal object" << std::endl;
+	return *this;
 }
 
 Animal::~Animal(void) {
 	std::cout << "Destroying Animal object" << std::endl;
+}
+
+void Animal::makeSound()
+{
+	std::cout << "Some Weird Animal sound" << std::endl;
 }
