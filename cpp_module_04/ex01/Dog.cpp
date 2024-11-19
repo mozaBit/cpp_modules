@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:13:56 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/19 01:50:31 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/19 08:21:55 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 Dog::Dog(void) : Animal("Dog")
 {
+	this->_brain = new Brain();
 	std::cout << "Creating a new instance of Dog" << std::endl;
 }
 
 Dog::Dog(const Dog &origin) : Animal(origin)
 {
+	*this = origin;
 	std::cout << "Creating a copy of Dog object" << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &src)
 {
+	this->_brain = src._brain;
 	Animal::operator=(src);
 	std::cout << "Copy Assigning Dog object" << std::endl;
 	return *this;
@@ -31,6 +34,7 @@ Dog &Dog::operator=(const Dog &src)
 
 Dog::~Dog(void)
 {
+	delete _brain;
 	std::cout << "Destroying Dog object" << std::endl;
 }
 

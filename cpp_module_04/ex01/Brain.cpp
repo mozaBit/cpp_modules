@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 12:14:00 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/19 08:17:15 by bmetehri         ###   ########.fr       */
+/*   Created: 2024/11/19 08:14:02 by bmetehri          #+#    #+#             */
+/*   Updated: 2024/11/19 08:15:50 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __DOG_HPP__
-#define __DOG_HPP__
-
-#include "Animal.hpp"
 #include "Brain.hpp"
-class Dog : public Animal {
-	private:
-		Brain*	_brain;
-	public:
-		Dog( void );
-		Dog( const Dog & origin );
-		Dog & operator=( const Dog & src );
-		~Dog( void );
+#include <iostream>
+#include <string>
 
-		void	makeSound() const ;
-};
-
-#endif

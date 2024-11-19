@@ -6,7 +6,7 @@
 #    By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 11:33:58 by bmetehri          #+#    #+#              #
-#    Updated: 2024/11/19 02:14:16 by bmetehri         ###   ########.fr        #
+#    Updated: 2024/11/19 08:14:19 by bmetehri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS =	Animal.cpp		\
 		Dog.cpp			\
 		WrongAnimal.cpp	\
 		WrongCat.cpp	\
+		Brain.cpp		\
 		main.cpp
 
 # Define the object files
