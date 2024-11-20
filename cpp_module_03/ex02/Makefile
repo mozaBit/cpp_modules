@@ -6,7 +6,7 @@
 #    By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 11:33:58 by bmetehri          #+#    #+#              #
-#    Updated: 2024/11/16 19:04:25 by bmetehri         ###   ########.fr        #
+#    Updated: 2024/11/20 19:02:51 by bmetehri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ TARGET = fixed
 # Define the source files
 SRCS =	ClapTrap.cpp		\
 		ScavTrap.cpp		\
+		FragTrap.cpp		\
 		main.cpp
 
 # Define the object files

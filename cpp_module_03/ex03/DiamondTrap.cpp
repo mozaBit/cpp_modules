@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:05:32 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/18 10:15:13 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/20 19:31:06 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ DiamondTrap::DiamondTrap(const DiamondTrap &origin) : ClapTrap(origin) , FragTra
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src)
 {
-
 	ScavTrap::operator=(src);
 	this->_name = ScavTrap::_getName();
 	this->_ClapTrapName = this->_name + "_clap_name";
@@ -51,6 +50,16 @@ DiamondTrap::~DiamondTrap(void)
 void DiamondTrap::attack(const std::string &target)
 {
 	ScavTrap::attack(target);
+}
+
+void DiamondTrap::takeDamage(unsigned int amount)
+{
+	ClapTrap::takeDamage(amount);
+}
+
+void DiamondTrap::beRepaired(unsigned int amount)
+{
+	ClapTrap::beRepaired(amount);
 }
 
 void DiamondTrap::whoAmI()

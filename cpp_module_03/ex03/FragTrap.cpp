@@ -25,12 +25,6 @@ FragTrap::FragTrap(const FragTrap &origin) : ClapTrap(origin)
 	std::cout << "FragTrap Copy assignement Constructor called"<< std::endl;
 }
 
-FragTrap &FragTrap::operator=(const FragTrap &src)
-{
-	ClapTrap::operator=(src);
-	return *this;
-}
-
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap Destructor called " << _getName() << " is Destroyed" << std::endl;
@@ -46,7 +40,23 @@ void FragTrap::attack(const std::string &target)
 	_setEnergy(this->_getEnergy() - 1);
 }
 
+void FragTrap::takeDamage(unsigned int amount)
+{
+	ClapTrap::takeDamage(amount);
+}
+
+void FragTrap::beRepaired(unsigned int amount)
+{
+	ClapTrap::beRepaired(amount);
+}
+
 void FragTrap::highFivesGuys(void)
 {
-	std::cout << "this a positive high fives request" << std::endl;
+	std::cout << "this is a positive high fives request from " << this->_getName() << std::endl;
+}
+
+FragTrap FragTrap::operator=(const FragTrap &src)
+{
+	ClapTrap::operator=(src);
+	return *this;
 }

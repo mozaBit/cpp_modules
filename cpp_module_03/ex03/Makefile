@@ -6,13 +6,13 @@
 #    By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 11:33:58 by bmetehri          #+#    #+#              #
-#    Updated: 2024/11/18 10:21:03 by bmetehri         ###   ########.fr        #
+#    Updated: 2024/11/20 19:32:21 by bmetehri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Define the compiler and flags
 CXX = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow-all
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
 
 # Define the target executable
 TARGET = fixed

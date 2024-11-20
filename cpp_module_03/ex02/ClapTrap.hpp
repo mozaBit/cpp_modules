@@ -6,9 +6,12 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:57:19 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/16 21:59:14 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/20 19:01:37 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef __CLAPTRAP_HPP__
+# define __CLAPTRAP_HPP__
 
 #include <iostream>
 #include <string>
@@ -38,3 +41,5 @@ class ClapTrap {
 		void	takeDamage( unsigned int amount );
 		void	beRepaired( unsigned int amount );
 };
+
+#endif

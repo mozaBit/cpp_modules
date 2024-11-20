@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:57:13 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/16 18:46:00 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/20 18:14:03 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 	if (this->_health < 0 ) {
 		this->_health = 0;
 	}
-	std::cout << "ClapTrap " << this->_name << " has taken " << amount << " damage! and " << _health << " is his new health"<< std::endl;
+	std::cout << this->_name << " has taken " << amount << " damage! and " << _health << " is his new health"<< std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -63,7 +63,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "error: " << _name << " can't be repaired cause he has no Health or no Energy" << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << this->_name << " is repairing himeself" << std::endl;
 	this->_energy--;
 	this->_health += amount;
+	std::cout << this->_name << " is repairing himeself with: " << amount << " amount, his new health is: " << this->_health << std::endl;
 }

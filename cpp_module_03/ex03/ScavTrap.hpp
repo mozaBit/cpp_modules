@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:51:08 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/18 10:15:57 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/20 18:59:18 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@ class ScavTrap : virtual public ClapTrap {
 	public:
 		ScavTrap(std::string name);
 		ScavTrap( const ClapTrap & origin );
-		ScavTrap & operator=( const ScavTrap & src );
-		virtual ~ScavTrap( void );
+		ScavTrap &operator=(const ScavTrap &src);
+		~ScavTrap( void );
 
-		virtual void	attack( const std::string& target );
-		void guardGate();
+
+		/*virtual*/ void	attack( const std::string& target );
+		void	takeDamage( unsigned int amount );
+		void	beRepaired( unsigned int amount );
+		void	guardGate();
 };
 
 
