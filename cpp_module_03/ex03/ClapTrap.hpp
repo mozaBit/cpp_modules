@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:57:19 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/20 19:01:48 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/21 10:47:48 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@
 #include <string>
 
 class ClapTrap {
-	private:
+	protected:
 		std::string		_name;
 		int				_health;
 		int				_energy;
 		int				_attack;
 
-	protected:
 		std::string	_getName(void);
 		int			_getHealth(void);
 		int			_getEnergy(void);
