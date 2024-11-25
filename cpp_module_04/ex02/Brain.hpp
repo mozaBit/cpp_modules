@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 08:14:04 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/19 08:16:35 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/25 10:30:04 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,15 @@
 
 class Brain {
 	private:
-		std::string	_ideas[100];
+		std::string _ideas[100];
 	public:
+		Brain( void );
+		Brain( const Brain & origin );
+		Brain & operator =( const Brain & src );
+		~Brain( void );
 
+		std::string*	getIdeas() const;
 };
+
 
 #endif

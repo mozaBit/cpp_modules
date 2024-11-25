@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 01:55:08 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/19 02:17:36 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:55:41 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ std::string WrongCat::getType(void) const
 
 void WrongCat::makeSound(void) const
 {
-	WrongAnimal::makeSound();
+	std::cout << "Some Weird WrongCat voice" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:13:56 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/19 08:21:55 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/25 10:23:23 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,14 @@ Dog::~Dog(void)
 void Dog::makeSound() const
 {
 	std::cout << "Awwwwwwwwwww!" << std::endl;
+}
+
+void Dog::displayIdeas() const
+{
+	std::string* ideas = this->_brain->getIdeas();
+	for (size_t i = 0; i < 100; i++) {
+		std::cout << ideas[i] << " ";
+	}
+	std::cout << std::endl;
+	delete [] ideas;
 }

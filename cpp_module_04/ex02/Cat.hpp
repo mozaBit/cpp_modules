@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:13:52 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/19 08:56:40 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/25 10:32:01 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ class Cat : public AAnimal {
 		Cat & operator=( const Cat & src );
 		~Cat( void );
 
-		/*virtual*/void	makeSound() const ;
+		void	makeSound() const ;
+		void	displayIdeas() const;
 };
 
 #endif

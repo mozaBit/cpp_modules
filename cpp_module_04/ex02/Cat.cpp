@@ -6,12 +6,11 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:13:48 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/19 08:55:33 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/25 10:32:22 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
-
 Cat::Cat(void) : AAnimal("Cat")
 {
 	this->_brain = new Brain();
@@ -40,4 +39,15 @@ Cat::~Cat(void)
 void Cat::makeSound() const
 {
 	std::cout << "mieowwwwwwwwwwww!" << std::endl;
+}
+
+
+void Cat::displayIdeas() const
+{
+	std::string* ideas = this->_brain->getIdeas();
+	for (size_t i = 0; i < 100; i++) {
+		std::cout << ideas[i] << " ";
+	}
+	std::cout << std::endl;
+	delete [] ideas;
 }

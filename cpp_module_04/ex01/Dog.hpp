@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:14:00 by bmetehri          #+#    #+#             */
-/*   Updated: 2024/11/19 08:17:15 by bmetehri         ###   ########.fr       */
+/*   Updated: 2024/11/25 10:23:14 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class Dog : public Animal {
 		~Dog( void );
 
 		void	makeSound() const ;
+		void	displayIdeas() const ;
 };
 
 #endif
