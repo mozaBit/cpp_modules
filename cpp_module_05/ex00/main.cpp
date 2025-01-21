@@ -21,9 +21,10 @@ int	main(void)
 		Bureaucrat	bam(239, "Bam");
 		Bureaucrat	yassine(39, "yassine");
 		Bureaucrat	hilal(1, "hilal");
+
+	  std::cout << yassine << std::endl;
 	} catch (std::exception &e) {
-		std::cout << "Caught exception: " << e.what(); << std::endl;
+		std::cout << "Caught exception: " << e.what() << std::endl;
 	}
-	std::cout << yassine << std::endl;
 	return (0);
 }

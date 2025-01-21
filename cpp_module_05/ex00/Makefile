@@ -19,7 +19,7 @@ TARGET = fixed
 
 # Define the source files
 SRCS =		Bureaucrat.cpp		\
-			main.cpp
+					main.cpp
 
 # Define the object files
 OBJS = $(SRCS:.cpp=.o)

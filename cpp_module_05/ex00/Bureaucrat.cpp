@@ -34,4 +34,5 @@ int			Bureaucrat::getGrade(void) const {
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& br) {
 	os << br.getName() << ", bureaucrat grade " << br.getGrade();
+  return (os);
 }
