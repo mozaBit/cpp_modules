@@ -18,13 +18,22 @@
 int	main(void)
 {
 	try {
-		Bureaucrat	bam(239, "Bam");
-		Bureaucrat	yassine(39, "yassine");
-		Bureaucrat	hilal(1, "hilal");
+		Bureaucrat	hilal(-1, "hilal");
 
-	  std::cout << yassine << std::endl;
 	} catch (std::exception &e) {
 		std::cout << "Caught exception: " << e.what() << std::endl;
 	}
+  try {
+		Bureaucrat	bam(239, "Bam");
+  } catch (std::exception &e) {
+		std::cout << "Caught exception: " << e.what() << std::endl;
+  }
+  try {
+	  Bureaucrat	yassine(39, "yassine");
+	  std::cout << yassine << std::endl;
+  }
+  catch (std::exception &e) {
+		std::cout << "Caught exception: " << e.what() << std::endl;
+  }
 	return (0);
 }

@@ -25,12 +25,8 @@ class Bureaucrat {
 			private:
 				std::string	_errMessage;
 			public:
-				GradeTooHighException(std::string errMessage) : _errMessage(errMessage) {
-          std::cout << _errMessage;
-    };
-        virtual ~GradeTooHighException() throw() {
-          std::cout << "";
-    };
+				GradeTooHighException(std::string errMessage) : _errMessage(errMessage) {};
+        virtual ~GradeTooHighException() throw() {};
 				virtual const char*	what(void) const throw() {
 					return (this->_errMessage.c_str());
 				}
@@ -39,12 +35,8 @@ class Bureaucrat {
 			private:
 				std::string	_errMessage;
 			public:
-				GradeTooLowException(std::string errMessage) : _errMessage(errMessage) {
-          std::cout << _errMessage;
-    };
-        virtual ~GradeTooLowException() throw() {
-          std::cout << "";
-    }; 
+				GradeTooLowException(std::string errMessage) : _errMessage(errMessage) {};
+        virtual ~GradeTooLowException() throw() {}; 
 				virtual const char*	what(void) const throw() {
 					return (this->_errMessage.c_str());
 				}
@@ -52,7 +44,7 @@ class Bureaucrat {
 	public:
 		Bureaucrat(int grade, std::string name);
 		std::string			getName(void) const;
-		int					getGrade(void) const;
+		int					    getGrade(void) const;
 	
 };
 
