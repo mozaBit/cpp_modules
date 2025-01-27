@@ -6,7 +6,7 @@
 #    By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 11:33:58 by bmetehri          #+#    #+#              #
-#    Updated: 2025/01/20 10:23:19 by bmetehri         ###   ########.fr        #
+#    Updated: 2025/01/27 03:03:30 by bmetehri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ TARGET = bureaucrat
 
 # Define the source files
 SRCS =		Bureaucrat.cpp		\
-					main.cpp
+			Form.cpp			\
+			main.cpp
 
 # Define the object files
 OBJS = $(SRCS:.cpp=.o)
@@ -32,7 +33,10 @@ all: $(TARGET)
 
 # Define the clean rule
 clean:
-	rm $(OBJS) $(TARGET)
+	rm $(OBJS)
+
+fclean: clean
+	rm $(TARGET)
 
 re: clean all
 

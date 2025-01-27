@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 18:50:37 by bmetehri          #+#    #+#             */
-/*   Updated: 2025/01/20 10:52:18 by bmetehri         ###   ########.fr       */
+/*   Updated: 2025/01/27 01:15:01 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Bureaucrat {
 				std::string	_errMessage;
 			public:
 				GradeTooLowException(std::string errMessage) : _errMessage(errMessage) {};
-        virtual ~GradeTooLowException() throw() {}; 
+        virtual ~GradeTooLowException() throw() {};
 				virtual const char*	what(void) const throw() {
 					return (this->_errMessage.c_str());
 				}
@@ -45,7 +45,7 @@ class Bureaucrat {
 		Bureaucrat(int grade, std::string name);
 		std::string			getName(void) const;
 		int					    getGrade(void) const;
-	
+
 };
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& br);
