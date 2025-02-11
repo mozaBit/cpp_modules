@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 01:29:50 by bmetehri          #+#    #+#             */
-/*   Updated: 2025/01/27 08:11:13 by bmetehri         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:32:43 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Form {
 			private:
 				std::string _errMessage;
 			public:
-				GradeTooHighException(std::string errMessage) : _errMessage(errMessage) {};
+				GradeTooHighException(const std::string& errMessage) : _errMessage(errMessage) {};
 				virtual ~GradeTooHighException() throw();
 				virtual const char*	what(void) const throw() {
 					return (this->_errMessage.c_str());
@@ -50,7 +50,7 @@ class Form {
 			private:
 				std::string _errMessage;
 			public:
-				GradeTooLowException(std::string errMessage) : _errMessage(errMessage) {};
+				GradeTooLowException(const std::string& errMessage) : _errMessage(errMessage) {};
 				virtual ~GradeTooLowException() throw();
 				virtual const char*	what(void) const throw() {
 					return (this->_errMessage.c_str());
