@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 18:49:47 by bmetehri          #+#    #+#             */
-/*   Updated: 2025/02/19 13:31:29 by bmetehri         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:30:04 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,12 @@ int main() {
 
 		// Low-grade bureaucrat fails to sign
 		Form f2("Test Form 2", 50, 30);
-		std::ostringstream oss2;
-		oldCout = std::cout.rdbuf(oss2.rdbuf());
-		b2.signForm(f2);
-		std::cout.rdbuf(oldCout);
-		assert(oss2.str() == "Low Grade couldn't sign Test Form 2 because grade is too low\n");
+		try {
+			b2.signForm(f2);
+		} catch (Form::GradeTooLowException &e) {
+			const std::string str = e.what();
+			assert(str == "Low Grade couldn't sign Test Form 2 because grade is too low\n");
+		}
 	}
 
 	// Test 5: Insertion Operator for Form

@@ -6,12 +6,13 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 18:48:42 by bmetehri          #+#    #+#             */
-/*   Updated: 2025/02/19 13:23:00 by bmetehri         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:05:09 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include <sstream>
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 	if (grade < 1) {
@@ -28,8 +29,9 @@ void				Bureaucrat::signAForm(AForm & AForm) {
 		AForm.beSigned(*this);
 		std::cout << this->_name << " signed " << AForm.getName() << std::endl;
 	} else {
-
-		std::cout << this->_name << " couldn't sign " << AForm.getName() << " because grade is too low" << std::endl;
+		std::ostringstream	str;
+		str << this->_name << " couldn't sign " << AForm.getName() << " because grade is too low" << std::endl;
+		throw	AForm::GradeTooLowException(str.str());
 	}
 }
 
@@ -37,12 +39,7 @@ void Bureaucrat::executeForm(AForm const &form)
 {
 	bool	noError = true;
 
-	try {
-		form.execute(*this);
-	} catch (std::exception& e) {
-		std::cerr << "Exception caught: " << e.what() << std::endl;
-		noError = false;
-	}
+	form.execute(*this);
 	if (noError)
 		std::cout << this->getName() << " executed " << form.getName() << "." << std::endl;
 }

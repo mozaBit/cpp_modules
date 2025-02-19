@@ -26,13 +26,13 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
+	AForm::execute(executor);
 	if (this->getSituation() && executor.getGrade() <= this->getGte()) {
-		if ((rand() % 101) % 2 == 0)
-			std::cout << this->_target << " has been robotomized successfully.";
+		int	num = (rand() % 101);
+		// std::cout << num << std::endl;
+		if ( num % 3 == 0)
+			std::cout << this->_target << " has been robotomized successfully" << std::endl;
 		else
-			std::cout << "that the robotomy failed";
-	} else if (executor.getGrade() > this->getGte()) {
-		throw AForm::GradeTooLowException("Error: executor grade is to low to execute");
-	} else if (this->getSituation())
-		throw AForm::FormNotSignedException("Error: Form is not signed");
+			std::cout << "the robotomy failed";
+	}
 }

@@ -6,12 +6,13 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 18:48:42 by bmetehri          #+#    #+#             */
-/*   Updated: 2025/02/19 13:30:41 by bmetehri         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:26:41 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include <sstream>
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 	if (grade < 1) {
@@ -25,9 +26,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 
 void				Bureaucrat::signForm(Form & form) {
 	if (this->_grade <= form.getGts()) {
+		form.beSigned(*this);
 		std::cout << this->_name << " signed " << form.getName() << std::endl;
 	} else {
-		std::cout << this->_name << " couldn't sign " << form.getName() << " because grade is too low" << std::endl;
+		std::ostringstream	str;
+		str << this->_name << " couldn't sign " << form.getName() << " because grade is too low" << std::endl;
+		throw	Form::GradeTooLowException(str.str());
 	}
 }
 

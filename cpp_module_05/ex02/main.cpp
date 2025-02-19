@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 18:49:47 by bmetehri          #+#    #+#             */
-/*   Updated: 2025/02/19 13:25:45 by bmetehri         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:11:30 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,7 @@ int main() {
 		} catch (const AForm::GradeTooLowException& e) {
 			caught = true;
 		}
-		assert(caught);                                                    /********** stoppped  hier cause there are a lot of changes that are needed to be done in the previous execise
-																							**** first : add beSigned func into signForm func
-																							**** second: throw execption instead of only printing simple errors
-
-																											 */
+		assert(caught);
 		assert(shrubbery.getSituation() == true); // Form remains signed
 	}
 
@@ -88,11 +84,10 @@ int main() {
 			caught = true;
 		}
 		assert(caught);
-
 		// Execution with insufficient grade
-		b2.signAForm(shrubbery);
 		caught = false;
 		try {
+			b2.signAForm(shrubbery);
 			b2.executeForm(shrubbery);
 		} catch (const AForm::GradeTooLowException& e) {
 			caught = true;
@@ -107,11 +102,18 @@ int main() {
 
 		b1.signAForm(robotomy);
 		std::ostringstream oss;
+		std::streambuf* original_cout_buffer = std::cout.rdbuf(); // Save original buffer
+		std::cout.rdbuf(oss.rdbuf()); // Redirect cout to oss
+
 		for (int i = 0; i < 10; ++i) {
 			b1.executeForm(robotomy);
 		}
-		// Check that the output contains both success and failure messages
+
+		std::cout.rdbuf(original_cout_buffer); // Restore original buffer
 		std::string output = oss.str();
+
+		// std::cout << oss.str() << std::endl;
+		// Now check assertions
 		assert(output.find("has been robotomized successfully") != std::string::npos);
 		assert(output.find("robotomy failed") != std::string::npos);
 	}
@@ -123,7 +125,10 @@ int main() {
 
 		b1.signAForm(pardon);
 		std::ostringstream oss;
+		std::streambuf* original_cout_buffer = std::cout.rdbuf(); // Save original buffer
+		std::cout.rdbuf(oss.rdbuf()); // Redirect cout to oss
 		b1.executeForm(pardon);
+		std::cout.rdbuf(original_cout_buffer); // Restore original buffer
 		assert(oss.str().find("has been pardoned by Zaphod Beeblebrox") != std::string::npos);
 	}
 

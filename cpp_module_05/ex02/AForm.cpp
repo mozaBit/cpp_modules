@@ -46,10 +46,13 @@ void	AForm::beSigned(const Bureaucrat & br) {
 		throw GradeTooLowException("Error: Bureaucrat grade is too low to sign this AForm");
 }
 
-// void AForm::execute(Bureaucrat const &executor) const
-// {
-// 	// Does Nothing, Overriden By Children
-// }
+void AForm::execute(Bureaucrat const &executor) const
+{
+	if (!this->getSituation())
+		throw AForm::FormNotSignedException("Error: Form is not signed");
+	else if (executor.getGrade() > this->getGte())
+		throw AForm::GradeTooLowException("Error: executor grade is to low to execute");
+}
 
 std::ostream&	operator<<(std::ostream& os,const AForm& frm) {
 	os << "AForm: " << frm.getName() << ", ";
