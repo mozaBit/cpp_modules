@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 01:29:50 by bmetehri          #+#    #+#             */
-/*   Updated: 2025/02/13 04:01:20 by bmetehri         ###   ########.fr       */
+/*   Updated: 2025/02/19 10:16:59 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __FORM_HPP__
-# define __FORM_HPP__
+#ifndef __AFORM_HPP__
+# define __AFORM_HPP__
 
 #include <string>
 #include <iostream>
@@ -19,7 +19,7 @@
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 	private:
 		const std::string	_name;
 		bool				_isSigned;
@@ -27,8 +27,8 @@ class Form {
 		const int			_gradeToExecute;
 
 	public:
-		Form(std::string name, int gts, int gte);
-		virtual ~Form();
+		AForm(std::string name, int gts, int gte);
+		virtual ~AForm();
 
 		std::string	getName(void) const;
 		bool		getSituation(void) const;
@@ -56,19 +56,29 @@ class Form {
 					return (this->_errMessage.c_str());
 				};
 		};
-
+		class FormNotSignedException : public std::exception {
+			private:
+				std::string _errMessage;
+			public:
+				FormNotSignedException(const std::string& errMessage) : _errMessage(errMessage) {};
+				virtual ~FormNotSignedException() throw() { };
+				virtual const char*	what(void) const throw() {
+					return (this->_errMessage.c_str());
+				};
+		};
 		void	beSigned(const Bureaucrat& br);
+		virtual void	execute(Bureaucrat const & executor) const = 0;
 
 };
 
-std::ostream&	operator<<(std::ostream& os, const Form& frm);
+std::ostream&	operator<<(std::ostream& os, const AForm& frm);
 
 #endif
 
 
 
 /**
- * We make a Form class that contains (in private):
+ * We make a AForm class that contains (in private):
  * 		- const std::string	_name;
  * 		- bool 				_isSigned;
  * 		- const int			_gradeToSign;
@@ -85,8 +95,8 @@ std::ostream&	operator<<(std::ostream& os, const Form& frm);
  * 		- void	beSigned(const Bureaucrat& br);
 
  * 		* in the Bureaucrat class
-			- void	signForm(const Forn& frm);
+			- void	signAForm(const Forn& frm);
 
  *
- * 		std::ostream&	operator<<(std::ostream & os, const Form & src);
+ * 		std::ostream&	operator<<(std::ostream & os, const AForm & src);
  */

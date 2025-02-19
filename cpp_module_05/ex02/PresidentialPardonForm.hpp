@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   PresidentialPardonAForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,3 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AForm.hpp"
+
+class PresidentialPardonForm : public AForm {
+	private:
+		std::string	_target;
+
+	public:
+		PresidentialPardonForm(std::string target);
+		virtual ~PresidentialPardonForm(void);
+
+		virtual void	execute(Bureaucrat const & executor) const;
+};

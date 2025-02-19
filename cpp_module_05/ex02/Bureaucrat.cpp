@@ -6,12 +6,12 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 18:48:42 by bmetehri          #+#    #+#             */
-/*   Updated: 2025/02/13 04:08:10 by bmetehri         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:23:00 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 	if (grade < 1) {
@@ -23,12 +23,28 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 	}
 }
 
-void				Bureaucrat::signForm(Form & form) {
-	if (this->_grade <= form.getGts()) {
-		std::cout << this->_name << " signed " << form.getName() << std::endl;
+void				Bureaucrat::signAForm(AForm & AForm) {
+	if (this->_grade <= AForm.getGts()) {
+		AForm.beSigned(*this);
+		std::cout << this->_name << " signed " << AForm.getName() << std::endl;
 	} else {
-		std::cout << this->_name << " couldn't sign " << form.getName() << " because grade is too low" << std::endl;
+
+		std::cout << this->_name << " couldn't sign " << AForm.getName() << " because grade is too low" << std::endl;
 	}
+}
+
+void Bureaucrat::executeForm(AForm const &form)
+{
+	bool	noError = true;
+
+	try {
+		form.execute(*this);
+	} catch (std::exception& e) {
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+		noError = false;
+	}
+	if (noError)
+		std::cout << this->getName() << " executed " << form.getName() << "." << std::endl;
 }
 
 std::string			Bureaucrat::getName(void) const {

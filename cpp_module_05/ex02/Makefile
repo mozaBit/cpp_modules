@@ -6,7 +6,7 @@
 #    By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 11:33:58 by bmetehri          #+#    #+#              #
-#    Updated: 2025/01/27 03:03:30 by bmetehri         ###   ########.fr        #
+#    Updated: 2025/02/19 12:30:30 by bmetehri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,11 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
 TARGET = bureaucrat
 
 # Define the source files
-SRCS =		Bureaucrat.cpp		\
-			Form.cpp			\
+SRCS =		Bureaucrat.cpp				\
+			AForm.cpp					\
+			ShrubberyCreationForm.cpp	\
+			RobotomyRequestForm.cpp		\
+			PresidentialPardonForm.cpp	\
 			main.cpp
 
 # Define the object files

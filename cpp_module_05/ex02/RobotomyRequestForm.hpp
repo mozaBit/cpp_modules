@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   RobotomyRequestAForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,3 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AForm.hpp"
+
+class RobotomyRequestForm : public AForm {
+	private:
+		std::string	_target;
+
+	public:
+		RobotomyRequestForm(std::string target);
+		virtual ~RobotomyRequestForm(void);
+
+		virtual void	execute(Bureaucrat const & executor) const;
+};

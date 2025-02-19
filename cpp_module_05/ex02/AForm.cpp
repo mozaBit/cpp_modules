@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form(std::string name, int gts, int gte) : _name(name), _isSigned(false), _gradeToSign(gts), _gradeToExecute(gte) {
+AForm::AForm(std::string name, int gts, int gte) : _name(name), _isSigned(false), _gradeToSign(gts), _gradeToExecute(gte) {
 	if (gte > 150 || gts > 150) {
 		throw GradeTooLowException("Error: grade is too low");
 	} else if (gte < 1 || gts < 1) {
@@ -21,34 +21,38 @@ Form::Form(std::string name, int gts, int gte) : _name(name), _isSigned(false), 
 	}
 };
 
-Form::~Form() { };
+AForm::~AForm() { };
 
-std::string Form::getName(void) const {
+std::string AForm::getName(void) const {
 	return (this->_name);
 }
 
-bool		Form::getSituation(void) const {
+bool		AForm::getSituation(void) const {
 	return (this->_isSigned);
 }
 
-int			Form::getGts(void) const {
+int			AForm::getGts(void) const {
 	return (this->_gradeToSign);
 }
 
-int			Form::getGte(void) const {
+int			AForm::getGte(void) const {
 	return (this->_gradeToExecute);
 }
 
-void	Form::beSigned(const Bureaucrat & br) {
+void	AForm::beSigned(const Bureaucrat & br) {
 	if (br.getGrade() <= this->_gradeToSign) {
 		this->_isSigned = true;
 	} else
-		throw GradeTooLowException("Error: Bureaucrat grade is too low to sign this Form");
+		throw GradeTooLowException("Error: Bureaucrat grade is too low to sign this AForm");
 }
 
+// void AForm::execute(Bureaucrat const &executor) const
+// {
+// 	// Does Nothing, Overriden By Children
+// }
 
-std::ostream&	operator<<(std::ostream& os,const Form& frm) {
-	os << "Form: " << frm.getName() << ", ";
+std::ostream&	operator<<(std::ostream& os,const AForm& frm) {
+	os << "AForm: " << frm.getName() << ", ";
 	os << "Status: ";
 	frm.getSituation() == true ? os << "Signed" << ", " : os << "Not Signed" << ", ";
 	os << "Grade Required to Sign: " << frm.getGts() << ", ";
