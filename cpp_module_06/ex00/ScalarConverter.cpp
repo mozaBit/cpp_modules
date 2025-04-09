@@ -6,7 +6,7 @@
 /*   By: bmetehri <bmetehri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 10:09:58 by bmetehri          #+#    #+#             */
-/*   Updated: 2025/02/21 20:59:07 by bmetehri         ###   ########.fr       */
+/*   Updated: 2025/04/10 01:17:11 by bmetehri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	oneCharacterLateral(std::string str) {
 
 void ScalarConverter::convert(const std::string& str)
 {
-	bool notInt = false, notFloat = false, isDouble = false;
+	bool isInt = false, isFloat = false, isDouble = false;
 	if (str == "nan" || str == "-inf" || str == "+inf" || str == "-inff" || str == "+inff")
 		specialLateral(str);
 	else if (str.length() == 1)
@@ -60,7 +60,24 @@ void ScalarConverter::convert(const std::string& str)
 		int					iNum;
 		float				fNum;
 		double				dNum;
+
+
+		int					count = str.length() - 1;
+		std::cout << count << std::endl;
+
 		std::istringstream	iss(str);
+
+		if (iss >> iNum && iss.eof()) {
+				isInt = true;
+			}	else if (iss >> dNum && iss.eof() && str[count] != 'f') {
+					isDouble = true;
+				}	else if (str[count] == 'f') {
+						std::string str = str;
+						str.pop_back();
+						std::istringstream iss2(str.c_str());
+						if (iss2 >> fNum  && iss2.eof())
+							isFloat = true;
+					}
 
 		//As tested in test.cpp
 	}
