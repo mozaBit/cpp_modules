@@ -94,32 +94,40 @@ gh repo delete mozaBit/re_philosophers --yes
 
 ### Step 3: Deploy README Files
 
-**IMPORTANT:** Clone this repo first, then run the deployment script:
+**RECOMMENDED APPROACH - Manual Control:**
+
+Clone this repo first, then run the preparation script:
 
 ```bash
 # Clone cpp_modules repo (if you haven't already)
 git clone https://github.com/mozaBit/cpp_modules.git
 cd cpp_modules
 
-# Run the automated README deployment
-./deploy_readmes.sh
+# Run the preparation script (clones repos and adds READMEs)
+bash ./prepare_readmes.sh
 ```
 
-This will:
-1. Clone each repository automatically (libft, ft_printf, minitalk, etc.)
-2. Add the appropriate README.md to each repo
-3. Commit with a professional message
-4. Push directly to the default branch (master/main)
-5. Show a summary of successful/failed deployments
+This will clone all 6 repos to `~/github_repos_to_push/` and add the READMEs. Then you commit/push manually with your credentials:
 
-**What's included:**
-- All 6 README files are in `readmes_to_push/` directory
-- Automated deployment script handles everything
-- Prompts before overwriting existing READMEs
-- Professional commit messages included
+```bash
+cd ~/github_repos_to_push
 
-**Alternative - Manual deployment:**
-If you prefer to deploy READMEs manually, see `readmes_to_push/README_INSTRUCTIONS.md` for detailed instructions.
+# Commit and push all repos at once
+for repo in libft ft_printf minitalk get_next_line go-challenge Projet_Python; do
+  (cd $repo && git add README.md && git commit -m "docs: add comprehensive README" && git push) || true
+done
+```
+
+**Why manual?**
+- Uses YOUR git credentials
+- You control when to push
+- No permission issues
+- Works with any authentication method (SSH, HTTPS, tokens)
+
+**Alternative - Fully automated (if git is configured):**
+```bash
+bash ./deploy_readmes.sh  # Requires git config to be set up
+```
 
 ---
 
@@ -240,7 +248,8 @@ They're all in `/tmp/repo_analysis/REPO_NAME/README.md` - you can edit them befo
 
 **Scripts Created:**
 - `github_cleanup_script.sh` (3.0 KB) - Delete unfinished/learning repos
-- `deploy_readmes.sh` (5.5 KB) - Automated README deployment
+- `prepare_readmes.sh` (3.8 KB) - **RECOMMENDED** - Prepare READMEs for manual push
+- `deploy_readmes.sh` (5.5 KB) - Fully automated README deployment (requires git config)
 - `check_ai_collaborators.sh` (3.1 KB) - Check for AI marks
 
 **README Package:**

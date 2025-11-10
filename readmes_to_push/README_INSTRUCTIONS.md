@@ -15,24 +15,46 @@ This directory contains comprehensive README.md files for all your GitHub reposi
 
 ## 🚀 Quick Deploy
 
-### Option 1: Automated Deployment (Recommended)
+### Option 1: Prepare & Push Manually (RECOMMENDED)
+
+Run the preparation script, then push manually with your own credentials:
+
+```bash
+cd ..
+bash ./prepare_readmes.sh
+```
+
+This will clone all repos to `~/github_repos_to_push/` and add READMEs.
+
+Then commit and push with YOUR credentials:
+
+```bash
+cd ~/github_repos_to_push
+
+# Push all at once
+for repo in libft ft_printf minitalk get_next_line go-challenge Projet_Python; do
+  (cd $repo && git add README.md && git commit -m "docs: add comprehensive README" && git push) || true
+done
+```
+
+**Why this approach?**
+- ✅ Uses YOUR git credentials (no permission issues)
+- ✅ Works with SSH, HTTPS, or tokens
+- ✅ You control when to push
+- ✅ No sudo needed
+
+### Option 2: Fully Automated (Requires git config)
 
 Run the automated deployment script from the parent directory:
 
 ```bash
 cd ..
-./deploy_readmes.sh
+bash ./deploy_readmes.sh  # Note: run as YOUR user, not sudo
 ```
 
-This script will:
-1. Clone each repository (if not already cloned)
-2. Add the appropriate README.md
-3. Commit with a professional message
-4. Push to GitHub
+This script will clone, commit, and push automatically. Requires git config to be set up properly.
 
-You'll be prompted before overwriting any existing READMEs.
-
-### Option 2: Manual Deployment
+### Option 3: Manual Deployment (One by One)
 
 If you prefer to deploy manually:
 
