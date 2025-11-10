@@ -92,30 +92,34 @@ gh repo delete mozaBit/re_philosophers --yes
 
 ---
 
-### Step 3: Push README Files
+### Step 3: Deploy README Files
 
-Run the README push script:
+**IMPORTANT:** Clone this repo first, then run the deployment script:
+
 ```bash
-cd /home/user/cpp_modules
-./push_readmes.sh
+# Clone cpp_modules repo (if you haven't already)
+git clone https://github.com/mozaBit/cpp_modules.git
+cd cpp_modules
+
+# Run the automated README deployment
+./deploy_readmes.sh
 ```
 
 This will:
-1. Push READMEs to all 6 repos (on `add-readme` branch)
-2. Push README to cpp_modules (on current branch)
+1. Clone each repository automatically (libft, ft_printf, minitalk, etc.)
+2. Add the appropriate README.md to each repo
+3. Commit with a professional message
+4. Push directly to the default branch (master/main)
+5. Show a summary of successful/failed deployments
 
-After running, you'll need to:
-- Go to GitHub and create Pull Requests for the `add-readme` branches
-- Review and merge the PRs
-- Delete the temporary branches
+**What's included:**
+- All 6 README files are in `readmes_to_push/` directory
+- Automated deployment script handles everything
+- Prompts before overwriting existing READMEs
+- Professional commit messages included
 
-**Quick PR links:**
-- https://github.com/mozaBit/libft/compare/add-readme
-- https://github.com/mozaBit/ft_printf/compare/add-readme
-- https://github.com/mozaBit/minitalk/compare/add-readme
-- https://github.com/mozaBit/get_next_line/compare/add-readme
-- https://github.com/mozaBit/go-challenge/compare/add-readme
-- https://github.com/mozaBit/Projet_Python/compare/add-readme
+**Alternative - Manual deployment:**
+If you prefer to deploy READMEs manually, see `readmes_to_push/README_INSTRUCTIONS.md` for detailed instructions.
 
 ---
 
@@ -233,9 +237,14 @@ They're all in `/tmp/repo_analysis/REPO_NAME/README.md` - you can edit them befo
 ---
 
 **Generated:** 2025-11-10
+
 **Scripts Created:**
-- `github_cleanup_script.sh` - Delete unfinished/learning repos
-- `push_readmes.sh` - Push README files to GitHub
-- `check_ai_collaborators.sh` - Check for AI marks
+- `github_cleanup_script.sh` (3.0 KB) - Delete unfinished/learning repos
+- `deploy_readmes.sh` (5.5 KB) - Automated README deployment
+- `check_ai_collaborators.sh` (3.1 KB) - Check for AI marks
+
+**README Package:**
+- `readmes_to_push/` directory - All 6 READMEs ready to deploy (43 KB total)
+- `readmes_to_push/README_INSTRUCTIONS.md` - Deployment guide
 
 **Happy cleaning! 🧹✨**
